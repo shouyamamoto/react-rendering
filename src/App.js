@@ -1,16 +1,23 @@
 import React, {useState} from 'react'
 import './App.css';
+import { ChildArea } from './ChildArea';
 
 function App() {
-  const [ num, setNum ] = useState(0)
+  const [ text, setText ] = useState('')
+  const [ open, setOpen ] = useState(false)
 
-  const onClickCountUp = () => {
-    setNum(num + 1)
+  const onChangeText = (event) => {setText(event.target.value)}
+  const onClickOpen = () => {
+    setOpen(!open)
   }
+
   return (
     <div className="App">
-      <p>{num}</p>
-      <button onClick={onClickCountUp}>CountUp</button>
+      <input placeholder="文字を入力" value={text} onChange={onChangeText}/>
+      <br />
+      <br />
+      <button onClick={onClickOpen}>表示</button>
+      <ChildArea open={open}/>
     </div>
   );
 }
